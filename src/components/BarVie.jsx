@@ -1,29 +1,21 @@
-import React, { Component } from 'react';
+import React, {useState} from 'react';
 
-class BarreDeVie extends Component {
-  constructor(props) {
-    super(props);
+const BarreDeVie = () => {
 
-    this.state = {
-      vie: 100, // Vous pouvez initialiser la valeur de la vie à ce que vous voulez
-    };
-  }
+  const [vie, setVie] = useState(100);
+  
+  const barreStyle = {
+    width: `${vie}%`,
+    backgroundColor: vie > 30 ? 'red' : 'red',
+  };
 
-  render() {
-    const { vie } = this.state;
-    const barreStyle = {
-      width: `${vie}%`,
-      backgroundColor: vie > 30 ? 'red' : 'red',
-    };
-
-    return (
-      <div className="barre-de-vie">
-        <div className="barre" style={barreStyle}>
-          {vie}%
-        </div>
+  return (
+    <div className="barre-de-vie">
+      <div className="barre" style={barreStyle}>
+        {vie}%
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default BarreDeVie;

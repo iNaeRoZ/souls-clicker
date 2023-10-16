@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+
 const enemyList = [
   {
     Nom: "Great Grey Wolf Sif",
@@ -19,17 +20,20 @@ const enemyList = [
     points: 105,
   },
 ];
+
 function Enemy() {
   const [index, setIndex] = useState(0);
   const [points, setPoints] = useState(enemyList[index].points);
+
   const decreasePoint = () => {
-    if (points > 0) {
+    if (points > 1) {
       setPoints(points - 1);
-    } else if (points === 0) {
+    } else {
       setIndex(index + 1);
       setPoints(enemyList[index + 1].points);
     }
   };
+
   return (
     <div>
       <h1>{enemyList[index].Nom}</h1>

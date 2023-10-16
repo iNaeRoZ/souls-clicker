@@ -1,20 +1,13 @@
-import { useState } from "react";
 import Enemy from "./components/Enemy";
 import "./App.css";
-import BarreDeVie from "./components/BarVie";
-import BarreDeSTM from "./components/BarSTM";
-import BarreDeMana from "./components/BarMana";
+import { Perso } from "./components/Perso";
+
 function App() {
   return (
     <>
       <div>
         <Enemy />
-        STATS
-        <BarreDeVie />
-        ----
-        <BarreDeSTM />
-        ----
-        <BarreDeMana />
+        <Perso />
       </div>
     </>
   );

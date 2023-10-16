@@ -1,29 +1,21 @@
-import React, { Component } from "react";
+import React, {useState} from "react";
 
-class BarreDeMana extends Component {
-  constructor(props) {
-    super(props);
+const BarreDeMana =()=> {
 
-    this.state = {
-      mana: 100, // Vous pouvez initialiser la valeur de la vie à ce que vous voulez
-    };
-  }
+  const [mana, setMana] = useState(100);
 
-  render() {
-    const { mana } = this.state;
-    const barreStyle = {
-      width: `${mana}%`,
-      backgroundColor: mana > 30 ? "blue" : "blue",
-    };
+  const barreStyle = {
+    width: `${mana}%`,
+    backgroundColor: mana > 30 ? "blue" : "blue",
+  };
 
-    return (
-      <div className="barre-de-mana">
-        <div className="barre" style={barreStyle}>
-          {mana}%
-        </div>
+  return (
+    <div className="barre-de-mana">
+      <div className="barre" style={barreStyle}>
+        {mana}%
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default BarreDeMana;

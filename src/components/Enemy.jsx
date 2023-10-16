@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const enemyList = [
   {
@@ -24,15 +24,25 @@ const enemyList = [
 function Enemy() {
   const [index, setIndex] = useState(0);
   const [points, setPoints] = useState(enemyList[index].points);
+  const [damagePerClick, setDamagePerClick] = useState(1);
+  const [damageAuto, setDamageAuto] = useState(1);
 
-  const decreasePoint = () => {
+  const decreasePoint = (damage = damageAuto) => {
     if (points > 1) {
-      setPoints(points - 1);
+      setPoints(points - damage);
     } else {
       setIndex(index + 1);
       setPoints(enemyList[index + 1].points);
     }
   };
+
+  useEffect(()=>{
+    const autoInterval = setInterval(decreasePoint, 1000);
+
+    return () => {
+        clearInterval(autoInterval);
+    };
+  }, [decreasePoint]);
 
   return (
     <div>
@@ -42,7 +52,7 @@ function Enemy() {
       </h2>
       <img
         src={enemyList[index].imgSrc}
-        onClick={decreasePoint}
+        onClick={() => decreasePoint(damagePerClick)}
         style={{ cursor: "pointer" }}
       />
     </div>
